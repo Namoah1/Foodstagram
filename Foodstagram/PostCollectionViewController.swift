@@ -8,17 +8,15 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class PostCollectionViewController: UICollectionViewController {
 
-    
+    let posts = getPosts()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
       
     }
-
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -26,13 +24,15 @@ class PostCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return posts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCollectionViewCell
+        
+        let post = posts[indexPath.row]
+        cell.postImageView.image = UIImage(named: post.image)
+        cell.postNameLabel.text = post.name
     
         return cell
     }

@@ -8,8 +8,22 @@
 
 import Foundation
 
-class Post {
+struct Post {
     
-    var image = " "
-    var name = " "
+    var image = ""
+    var name = ""
+    
+    
+    init(image: String, name: String) {
+        self.image = ""
+        self.name = ""
+    }
+}
+
+func getPosts() -> [Post] {
+    let post1 = Post(image: "fufu", name: "Fufu")
+    let post2 = Post(image: "waakye", name: "Waakye")
+    let post3 = Post(image: "banku", name: "Banku")
+    
+    return [post1, post2, post3]
 }
