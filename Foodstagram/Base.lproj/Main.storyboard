@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +11,7 @@
         <!--FoodStagram-->
         <scene sceneID="06g-SC-s8q">
             <objects>
-                <collectionViewController id="MQf-oU-7HN" customClass="FoodCollectionViewController" customModule="Foodstagram" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="MQf-oU-7HN" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="b3G-Ex-Z3K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,10 +72,56 @@
                     <navigationItem key="navigationItem" title="FoodStagram" id="ael-z5-0di">
                         <barButtonItem key="backBarButtonItem" title="Back" id="6Ny-9Y-9BA"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="X4F-ke-pfw" kind="presentation" identifier="BlowUp" id="KS5-mt-G9D"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxe-Jq-lix" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1810.144927536232" y="129.91071428571428"/>
+        </scene>
+        <!--Food Detail View Controller-->
+        <scene sceneID="jtB-iy-D4R">
+            <objects>
+                <viewController id="X4F-ke-pfw" customClass="FoodDetailViewController" customModule="Foodstagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zyx-Jz-P6W">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VoL-2b-pok">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uav-QF-tKh">
+                                <rect key="frame" x="374" y="10" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Rex-Sv-bdb"/>
+                                    <constraint firstAttribute="height" constant="30" id="nxZ-bK-Sz0"/>
+                                </constraints>
+                                <state key="normal" image="xmark" catalog="system"/>
+                                <connections>
+                                    <segue destination="xPC-GR-GBK" kind="unwind" unwindAction="unwindToMainWithSegue:" id="Ock-Lf-58P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="VoL-2b-pok" secondAttribute="bottom" id="5sc-Q1-PeR"/>
+                            <constraint firstItem="VoL-2b-pok" firstAttribute="top" secondItem="Zyx-Jz-P6W" secondAttribute="top" id="9Hd-2U-S2b"/>
+                            <constraint firstItem="Uav-QF-tKh" firstAttribute="top" secondItem="qoZ-II-Jgo" secondAttribute="top" constant="10" id="AlG-WU-zPW"/>
+                            <constraint firstItem="VoL-2b-pok" firstAttribute="leading" secondItem="qoZ-II-Jgo" secondAttribute="leading" id="FRk-Z0-UqD"/>
+                            <constraint firstItem="qoZ-II-Jgo" firstAttribute="trailing" secondItem="Uav-QF-tKh" secondAttribute="trailing" constant="10" id="pOz-uO-Mr7"/>
+                            <constraint firstItem="qoZ-II-Jgo" firstAttribute="trailing" secondItem="VoL-2b-pok" secondAttribute="trailing" id="sIe-is-sNY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qoZ-II-Jgo"/>
+                    </view>
+                    <connections>
+                        <outlet property="foodImageView" destination="VoL-2b-pok" id="p1V-1S-4ez"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K8j-gI-0GP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="xPC-GR-GBK" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2628.985507246377" y="129.91071428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hAf-we-J6M">
@@ -95,4 +142,7 @@
             <point key="canvasLocation" x="900.00000000000011" y="129.91071428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="xmark" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
