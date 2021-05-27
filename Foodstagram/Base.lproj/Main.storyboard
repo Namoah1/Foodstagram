@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MQf-oU-7HN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Nv-rp-O1Q">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Foodstagram-->
         <scene sceneID="06g-SC-s8q">
             <objects>
                 <collectionViewController id="MQf-oU-7HN" sceneMemberID="viewController">
@@ -15,20 +15,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Apu-zj-Rzz">
-                            <size key="itemSize" width="50" height="50"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Apu-zj-Rzz">
+                            <size key="itemSize" width="150" height="175"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7ei-TM-Wu7">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7ei-TM-Wu7" customClass="PostCollectionViewCell" customModule="Foodstagram" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1Bt-0d-SI7">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="175"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="znG-H4-wkU">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pir-N6-8bB">
+                                            <rect key="frame" x="0.0" y="150" width="150" height="25"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Pir-N6-8bB" secondAttribute="bottom" id="8oy-rb-Rfq"/>
+                                        <constraint firstAttribute="trailing" secondItem="Pir-N6-8bB" secondAttribute="trailing" id="EM6-96-NQ2"/>
+                                        <constraint firstItem="Pir-N6-8bB" firstAttribute="leading" secondItem="1Bt-0d-SI7" secondAttribute="leading" id="L4e-4A-BdO"/>
+                                        <constraint firstAttribute="trailing" secondItem="znG-H4-wkU" secondAttribute="trailing" id="V7n-2N-mb5"/>
+                                        <constraint firstItem="znG-H4-wkU" firstAttribute="leading" secondItem="1Bt-0d-SI7" secondAttribute="leading" id="Zqb-HX-trJ"/>
+                                        <constraint firstItem="znG-H4-wkU" firstAttribute="top" secondItem="1Bt-0d-SI7" secondAttribute="top" id="bzk-fm-gZE"/>
+                                        <constraint firstAttribute="bottom" secondItem="znG-H4-wkU" secondAttribute="bottom" constant="25" id="dVN-Xj-uqE"/>
+                                        <constraint firstItem="Pir-N6-8bB" firstAttribute="top" secondItem="znG-H4-wkU" secondAttribute="bottom" id="yKe-Xo-wfC"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
+                                <connections>
+                                    <outlet property="postImageView" destination="znG-H4-wkU" id="Unq-Li-Ksa"/>
+                                    <outlet property="postNameLabel" destination="Pir-N6-8bB" id="Td4-Qh-3Fg"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -36,10 +61,31 @@
                             <outlet property="delegate" destination="MQf-oU-7HN" id="RyR-rT-ErK"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="Foodstagram" id="gty-S8-kZy">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Fww-cG-PAz"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxe-Jq-lix" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="920" y="130"/>
+            <point key="canvasLocation" x="1100" y="98.4375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="klq-VD-GcV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Nv-rp-O1Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9XU-IO-dsK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MQf-oU-7HN" kind="relationship" relationship="rootViewController" id="Fog-kj-8TX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KBu-zd-8yd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="189.85507246376812" y="98.4375"/>
         </scene>
     </scenes>
 </document>
